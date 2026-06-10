@@ -129,12 +129,18 @@ def harvest_rank(rank: str) -> set[str]:
 
 def expand_entries(scientific_names: set[str]) -> set[str]:
     entries: set[str] = set()
+    rank_markers = {"var", "var.", "ssp", "ssp.", "subsp", "subsp.", "×", "x"}
 
     for name in scientific_names:
         entries.update(name_variants(name))
         parts = name.split()
-        if parts:
-            entries.add(parts[0])
+        if not parts:
+            continue
+
+        entries.add(parts[0])
+        for part in parts[1:]:
+            if part.lower() not in rank_markers:
+                entries.add(part)
 
     for token in ("var", "ssp", "subsp", "×"):
         entries.add(token)
