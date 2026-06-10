@@ -24,12 +24,13 @@ This is the most universal approach on Mac. Any app that uses the system spell c
 
 1. Download this repo from GitHub (green **Code** button → **Download ZIP**)
 2. Unzip
-3. Double-click **`Install.command`**
-4. Quit and reopen your writing apps
+3. Double-click **`Manual Install.command`**
+4. If macOS says "Operation not permitted", follow the on-screen steps (copy from `words.txt`, paste into `LocalDictionary`, save)
+5. Quit and reopen your writing apps
 
-No Terminal typing required. macOS may ask you to approve running the script once — click Open.
+**Automatic install** (`Install.command`) works only if Terminal has Full Disk Access in **System Settings → Privacy & Security → Full Disk Access**. Most people should use **Manual Install** instead.
 
-Keep **System Settings → Keyboard → Text Input → Edit → Spelling** on **U.S.** or **Automatic by Language**. Do not switch to botanical-latin (Library).
+Keep **System Settings → Keyboard → Text Input → Edit → Spelling** on **U.S.** or **Automatic by Language**.
 
 ## Uninstall
 
