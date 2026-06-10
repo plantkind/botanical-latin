@@ -1,64 +1,72 @@
 # botanical-latin
 
-California native plant names for macOS spell-check. Stops correct botanical Latin from getting red squiggles in iA Writer, Notion, Notes, Mail, and most Mac apps.
+A text file of California native plant names for macOS spell-check.
 
-Built from [iNaturalist](https://www.inaturalist.org/) data for California native vascular plants.
+Copy the words into your Mac's personal dictionary once. After that, names like `Arctostaphylos` and `agrifolia` stop getting red squiggles in iA Writer, Notion, Notes, Mail, and most Mac apps.
 
-| | |
-|---|---|
-| Plant names | 8,893 species |
-| Dictionary entries | 15,551 (includes genera and epithets like `agrifolia`) |
-| Last built | June 9th, 2026 |
+Built from [iNaturalist](https://www.inaturalist.org/) data — 8,893 species, 15,551 entries including genera and epithets.
 
-## How it works
+## Install
 
-macOS keeps a personal word list called **LocalDictionary** — a plain text file, one word per line. Words you right-click and "Learn Spelling" go here.
+You only need **`dist/words.txt`**.
 
-This project adds California native plant names to that same list. Your spelling language stays **U.S. English** (or Automatic by Language). English still works; plant names stop getting flagged.
+### 1. Get the word list
 
-This is the most universal approach on Mac. Any app that uses the system spell checker benefits — not just one editor.
+Download this repo (**Code** → **Download ZIP**) or grab [`dist/words.txt`](dist/words.txt) directly from GitHub.
 
-**Not covered:** Notion in a web browser (uses Chrome or Safari spell-check, not macOS). Use the Notion desktop app instead.
+### 2. Open your Mac's personal dictionary
 
-## Install (for friends)
+1. Open **Finder**
+2. Press **Cmd+Shift+G** (Go to Folder)
+3. Paste this path and press **Return**:
 
-1. Download this repo from GitHub (green **Code** button → **Download ZIP**)
-2. Unzip
-3. Double-click **`Manual Install.command`**
-4. If macOS says "Operation not permitted", follow the on-screen steps (copy from `words.txt`, paste into `LocalDictionary`, save)
-5. Quit and reopen your writing apps
+```
+~/Library/Group Containers/group.com.apple.AppleSpell/Library/Spelling
+```
 
-**Automatic install** (`Install.command`) works only if Terminal has Full Disk Access in **System Settings → Privacy & Security → Full Disk Access**. Most people should use **Manual Install** instead.
+4. Double-click **LocalDictionary** (opens in TextEdit)
+
+If that folder is empty, try this path instead:
+
+```
+~/Library/Spelling
+```
+
+### 3. Paste the plant names
+
+1. Open **`words.txt`** from this repo
+2. **Cmd+A** → **Cmd+C** (select all, copy)
+3. In **LocalDictionary**, click at the very end of the file
+4. **Cmd+V** → **Cmd+S** (paste, save)
+
+### 4. Restart your apps
+
+Quit your writing apps fully (**Cmd+Q**), then reopen them.
 
 Keep **System Settings → Keyboard → Text Input → Edit → Spelling** on **U.S.** or **Automatic by Language**.
 
+## That's it
+
+No app to install. No Keyboard language to switch. You are appending to a plain text file macOS already uses for spell-check.
+
+Works anywhere that uses the system spell checker. **Notion in a browser** uses Chrome or Safari spell-check instead — use the Notion desktop app on Mac.
+
 ## Uninstall
 
-Double-click **`Uninstall.command`**. Removes only the plant names this installer added — not your own learned words.
+Open **LocalDictionary** the same way (Cmd+Shift+G path above). Delete the plant names you pasted, or restore from a backup if you made one before editing.
 
-Before every install, a backup is saved next to LocalDictionary as `LocalDictionary.backup-botanical-latin`. You can open that file in TextEdit and restore by hand if you ever want to.
+To remove only what you added: search for a block of names you recognize from `words.txt`, select those lines, delete, save.
 
-## Is it safe?
+## Optional helpers
 
-Yes. LocalDictionary is just a text file on your Mac:
+| File | What it does |
+|------|----------------|
+| `Manual Install.command` | Opens `words.txt` and the Spelling folder for you |
+| `Install.command` | Automatic paste (needs Terminal Full Disk Access — usually blocked) |
+| `Uninstall.command` | Removes names if automatic install succeeded |
+| `scripts/build.py` | Rebuild `words.txt` from iNaturalist |
 
-```
-~/Library/Group Containers/group.com.apple.AppleSpell/Library/Spelling/LocalDictionary
-```
-
-- Fully reversible via **Uninstall.command**
-- Backup created on install
-- Only adds names; does not change Keyboard settings or replace English
-- Tracks what it added in `~/Library/Application Support/botanical-latin/`
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `dist/words.txt` | Plain word list (for manual install or inspection) |
-| `Install.command` | Double-click installer |
-| `Uninstall.command` | Double-click uninstaller |
-| `dist/botanical-latin.dic` | Hunspell format (optional; not recommended for most users) |
+Most people should just use the manual steps above.
 
 ## Rebuild
 
@@ -66,9 +74,9 @@ Yes. LocalDictionary is just a text file on your Mac:
 python3 scripts/build.py
 ```
 
-## Data source
+## Data
 
-iNaturalist API — California (`place_id=14`), native plants, `taxon_id=47126` (Plantae).
+iNaturalist API — California native vascular plants (`place_id=14`, `taxon_id=47126`, `native=true`).
 
 ## License
 
