@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Hunspell dictionary files from iNaturalist California native plant taxa."""
+"""Build words.txt from iNaturalist California native plant taxa."""
 
 from __future__ import annotations
 
@@ -148,19 +148,12 @@ def expand_entries(scientific_names: set[str]) -> set[str]:
     return {entry for entry in entries if entry}
 
 
-def write_hunspell(entries: set[str]) -> tuple[Path, Path]:
+def write_words(entries: set[str]) -> Path:
     DIST.mkdir(parents=True, exist_ok=True)
-    dic_path = DIST / "botanical-latin.dic"
-    aff_path = DIST / "botanical-latin.aff"
-
+    words_path = DIST / "words.txt"
     words = sorted(entries, key=str.casefold)
-    dic_path.write_text(f"{len(words)}\n" + "\n".join(words) + "\n", encoding="utf-8")
-    aff_path.write_text(
-        "SET UTF-8\nWORDCHARS ×'\nTRY abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ×-\n",
-        encoding="utf-8",
-    )
-    (DIST / "words.txt").write_text("\n".join(words) + "\n", encoding="utf-8")
-    return dic_path, aff_path
+    words_path.write_text("\n".join(words) + "\n", encoding="utf-8")
+    return words_path
 
 
 def main() -> None:
@@ -182,7 +175,7 @@ def main() -> None:
         print("Skipping infraspecific ranks (pass --full to include; slower, rate-limited).")
 
     entries = expand_entries(names)
-    dic_path, aff_path = write_hunspell(entries)
+    words_path = write_words(entries)
 
     metadata = {
         "built_on": date.today().isoformat(),
@@ -192,8 +185,7 @@ def main() -> None:
     }
     (DIST / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 
-    print(f"Wrote {dic_path} ({len(entries)} entries)")
-    print(f"Wrote {aff_path}")
+    print(f"Wrote {words_path} ({len(entries)} entries)")
     print(json.dumps(metadata, indent=2))
 
 
