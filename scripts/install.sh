@@ -5,8 +5,9 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WORDS="$ROOT/dist/words.txt"
 STATE_DIR="$HOME/Library/Application Support/botanical-latin"
 INSTALLED_LIST="$STATE_DIR/installed-words.txt"
+# Modern macOS (Sonoma+) reads this path only — NOT ~/Library/Spelling/
 LOCAL_DICT="$HOME/Library/Group Containers/group.com.apple.AppleSpell/Library/Spelling/LocalDictionary"
-LEGACY_DICT="$HOME/Library/Spelling/LocalDictionary"
+LEGACY_DICT="$HOME/Library/Spelling/LocalDictionary"  # ignored by spell-check on current macOS
 
 if [[ ! -f "$WORDS" ]]; then
   echo "ERROR: Missing dist/words.txt"

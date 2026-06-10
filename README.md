@@ -12,12 +12,14 @@ You only need **`dist/words.txt`**.
 
 ### 1. Get the word list
 
-Download this repo (**Code** → **Download ZIP**) or grab [`dist/words.txt`](dist/words.txt) directly from GitHub.
+Download this repo (**Code** → **Download ZIP**) or grab [`dist/words.txt`](dist/words.txt) from GitHub.
 
 ### 2. Open your Mac's personal dictionary
 
+**Important:** On modern macOS (Sonoma and later), the file moved. Use this path — not `~/Library/Spelling/`.
+
 1. Open **Finder**
-2. Press **Cmd+Shift+G** (Go to Folder)
+2. Press **Cmd+Shift+G**
 3. Paste this path and press **Return**:
 
 ```
@@ -26,47 +28,43 @@ Download this repo (**Code** → **Download ZIP**) or grab [`dist/words.txt`](di
 
 4. Double-click **LocalDictionary** (opens in TextEdit)
 
-If that folder is empty, try this path instead:
-
-```
-~/Library/Spelling
-```
-
 ### 3. Paste the plant names
 
 1. Open **`words.txt`** from this repo
-2. **Cmd+A** → **Cmd+C** (select all, copy)
-3. In **LocalDictionary**, click at the very end of the file
-4. **Cmd+V** → **Cmd+S** (paste, save)
+2. **Cmd+A** → **Cmd+C**
+3. In **LocalDictionary**, click at the very end (or **Cmd+A** to replace all if this is a fresh Mac)
+4. **Cmd+V** → **Cmd+S**
 
-### 4. Restart your apps
+### 4. Restart spell-check
 
-Quit your writing apps fully (**Cmd+Q**), then reopen them.
+Pick one:
+
+- **Restart your Mac** (most reliable the first time), or
+- Quit iA Writer and other writing apps fully (**Cmd+Q**), then reopen
 
 Keep **System Settings → Keyboard → Text Input → Edit → Spelling** on **U.S.** or **Automatic by Language**.
 
+### Wrong folder?
+
+If you pasted into `~/Library/Spelling/LocalDictionary` instead, macOS will ignore it. Use the **Group Containers** path above.
+
 ## That's it
 
-No app to install. No Keyboard language to switch. You are appending to a plain text file macOS already uses for spell-check.
+No app to install. No Keyboard language to switch. You are editing a plain text file macOS already uses for spell-check.
 
 Works anywhere that uses the system spell checker. **Notion in a browser** uses Chrome or Safari spell-check instead — use the Notion desktop app on Mac.
 
 ## Uninstall
 
-Open **LocalDictionary** the same way (Cmd+Shift+G path above). Delete the plant names you pasted, or restore from a backup if you made one before editing.
-
-To remove only what you added: search for a block of names you recognize from `words.txt`, select those lines, delete, save.
+Open **LocalDictionary** via the Group Containers path above. Delete the plant names you added, save.
 
 ## Optional helpers
 
 | File | What it does |
 |------|----------------|
-| `Manual Install.command` | Opens `words.txt` and the Spelling folder for you |
-| `Install.command` | Automatic paste (needs Terminal Full Disk Access — usually blocked) |
-| `Uninstall.command` | Removes names if automatic install succeeded |
+| `dist/words.txt` | The word list — this is the main deliverable |
+| `Manual Install.command` | Opens `words.txt` and the Spelling folder |
 | `scripts/build.py` | Rebuild `words.txt` from iNaturalist |
-
-Most people should just use the manual steps above.
 
 ## Rebuild
 
