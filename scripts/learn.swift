@@ -68,4 +68,4 @@ if passed == tests.count {
 } else {
   print("Finished teaching \(taught) words, but some checks did not pass.")
 }
-print("Quit and reopen any writing apps you have open.")
+print("Quit and reopen any writing apps you have open (Cmd+Q).")
