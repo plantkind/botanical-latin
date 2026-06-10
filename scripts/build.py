@@ -155,7 +155,11 @@ def write_hunspell(entries: set[str]) -> tuple[Path, Path]:
 
     words = sorted(entries, key=str.casefold)
     dic_path.write_text(f"{len(words)}\n" + "\n".join(words) + "\n", encoding="utf-8")
-    aff_path.write_text("SET UTF-8\n", encoding="utf-8")
+    aff_path.write_text(
+        "SET UTF-8\nWORDCHARS ×'\nTRY abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ×-\n",
+        encoding="utf-8",
+    )
+    (DIST / "words.txt").write_text("\n".join(words) + "\n", encoding="utf-8")
     return dic_path, aff_path
 
 
