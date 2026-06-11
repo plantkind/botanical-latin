@@ -1,16 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-swift -e '
-import AppKit
-let c = NSSpellChecker.shared
-let tests = ["Arctostaphylos", "Eriogonum", "agrifolia", "fasciculatum"]
-var ok = 0
-for w in tests {
-  let r = c.checkSpelling(of: w, startingAt: 0, language: "en", wrap: false, inSpellDocumentWithTag: 0, wordCount: nil)
-  let pass = r.location == NSNotFound
-  if pass { ok += 1 }
-  print("\(w): \(pass ? "recognized" : "not recognized")")
+osascript -l JavaScript -e '
+ObjC.import("AppKit");
+var c = $.NSSpellChecker.sharedSpellChecker;
+var tests = ["Arctostaphylos", "Eriogonum", "agrifolia", "fasciculatum"];
+var ok = 0;
+for (var i = 0; i < tests.length; i++) {
+  var w = tests[i];
+  var r = c.checkSpellingOfStringStartingAtLanguageWrapInSpellDocumentWithTagWordCount(w, 0, "en", false, 0, null);
+  var pass = String(r.location) === "9223372036854775807";
+  if (pass) ok++;
+  console.log(w + ": " + (pass ? "recognized" : "not recognized"));
 }
-exit(ok == tests.count ? 0 : 1)
+if (ok !== tests.length) ObjC.import("stdlib").exit(1);
 '

@@ -1,0 +1,7 @@
+First time on a new Mac
+
+Right-click Learn Words.command → Open → Open
+
+(Do not double-click the first time — macOS will block it.)
+
+Wait about 10 seconds, then quit and reopen your writing app.

@@ -1,0 +1,82 @@
+function run(argv) {
+  if (!argv || argv.length === 0) {
+    throw new Error("Usage: learn.jxa /path/to/words.txt");
+  }
+
+  ObjC.import("Foundation");
+  ObjC.import("AppKit");
+
+  var path = $(argv[0]);
+  var content = $.NSString.stringWithContentsOfFileEncodingError(
+    path,
+    $.NSUTF8StringEncoding,
+    null
+  );
+
+  if (!content) {
+    throw new Error("Could not read words file: " + argv[0]);
+  }
+
+  var raw = ObjC.unwrap(content);
+  var lines = raw.split("\n");
+  var seen = {};
+  var words = [];
+
+  for (var i = 0; i < lines.length; i++) {
+    var word = lines[i].replace(/^\s+|\s+$/g, "");
+    if (!word || seen[word.toLowerCase()]) {
+      continue;
+    }
+    seen[word.toLowerCase()] = true;
+    words.push(word);
+  }
+
+  words.sort(function (a, b) {
+    return a.localeCompare(b, undefined, { sensitivity: "base" });
+  });
+
+  var checker = $.NSSpellChecker.sharedSpellChecker;
+  var total = words.length;
+
+  for (var j = 0; j < total; j++) {
+    checker.learnWord($(words[j]));
+    if ((j + 1) % 1000 === 0 || j + 1 === total) {
+      $.NSFileHandle.fileHandleWithStandardError.writeData(
+        $.NSString.alloc.initWithString(
+          "  " + (j + 1) + " / " + total + "\n"
+        ).dataUsingEncoding($.NSUTF8StringEncoding)
+      );
+    }
+  }
+
+  var tests = ["Arctostaphylos", "Eriogonum", "agrifolia"];
+  var passed = 0;
+  var linesOut = [];
+
+  for (var k = 0; k < tests.length; k++) {
+    var testWord = tests[k];
+    var range = checker.checkSpellingOfStringStartingAtLanguageWrapInSpellDocumentWithTagWordCount(
+      testWord,
+      0,
+      "en",
+      false,
+      0,
+      null
+    );
+    var ok = String(range.location) === "9223372036854775807"; // NSNotFound
+    if (ok) {
+      passed += 1;
+    }
+    linesOut.push("  " + testWord + ": " + (ok ? "recognized" : "still flagged"));
+  }
+
+  linesOut.push("");
+  if (passed === tests.length) {
+    linesOut.push("Success! " + total + " plant names added.");
+  } else {
+    linesOut.push("Finished teaching " + total + " words, but some checks did not pass.");
+  }
+  linesOut.push("Quit and reopen any writing apps you have open (Cmd+Q).");
+
+  return linesOut.join("\n");
+}

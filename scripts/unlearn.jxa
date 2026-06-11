@@ -1,0 +1,53 @@
+function run(argv) {
+  if (!argv || argv.length === 0) {
+    throw new Error("Usage: unlearn.jxa /path/to/words.txt");
+  }
+
+  ObjC.import("Foundation");
+  ObjC.import("AppKit");
+
+  var path = $(argv[0]);
+  var content = $.NSString.stringWithContentsOfFileEncodingError(
+    path,
+    $.NSUTF8StringEncoding,
+    null
+  );
+
+  if (!content) {
+    throw new Error("Could not read words file: " + argv[0]);
+  }
+
+  var raw = ObjC.unwrap(content);
+  var lines = raw.split("\n");
+  var seen = {};
+  var words = [];
+
+  for (var i = 0; i < lines.length; i++) {
+    var word = lines[i].replace(/^\s+|\s+$/g, "");
+    if (!word || seen[word.toLowerCase()]) {
+      continue;
+    }
+    seen[word.toLowerCase()] = true;
+    words.push(word);
+  }
+
+  var checker = $.NSSpellChecker.sharedSpellChecker;
+  var total = words.length;
+
+  for (var j = 0; j < total; j++) {
+    checker.forgetWord($(words[j]));
+    if ((j + 1) % 1000 === 0 || j + 1 === total) {
+      $.NSFileHandle.fileHandleWithStandardError.writeData(
+        $.NSString.alloc.initWithString(
+          "  " + (j + 1) + " / " + total + "\n"
+        ).dataUsingEncoding($.NSUTF8StringEncoding)
+      );
+    }
+  }
+
+  return (
+    "Removed " +
+    total +
+    " plant names.\nQuit and reopen any writing apps you have open (Cmd+Q)."
+  );
+}

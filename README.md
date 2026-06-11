@@ -2,27 +2,27 @@
 
 **botanical-latin**
 
-Remove red squiggles spelling errors on California native plant names while you type on your computer
+Remove red squiggles on California native plant names while you type on your Mac.
 
-Double-click one file and then macOS spell-check recognizes names like `Arctostaphylos`, `Eriogonum`, and `Ceanothus`
+`Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a misspelled word — but for the full list at once.
 
-This `Learn Words.command` teaches macOS the same way when you right click on a mispelled word to then `Learn Spelling` does. Instead of doing this for every plant name, this loads the entire list of plants.
+Works in Notion's desktop app, Notes, Mail, Pages, TextEdit, iA Writer, and most Mac apps that use system spell-check. Web apps in a browser may use Chrome or Safari spell-check instead, so desktop apps are preferred.
 
-Works in your favorite writing apps like Notion's desktop app, Notes, Mail, Pages, Text Edit, iA Writer, and most mac apps that use the system spell-check. Web apps in the browser may use Chrome or Safari spell check instead, so desktop apps are preferred.
-
-15,551 entries, 8,893 species, built from [iNaturalist](https://www.inaturalist.org/) California native plant data
+15,551 entries · 8,893 species · built from [iNaturalist](https://www.inaturalist.org/) California native plant data
 
 #### Install
 
-1. Download this repo (**Code** → **Download ZIP**)
-2. Double-click **`Learn Words.command`**
-3. Wait for the success message (~10 seconds)
-4. Quit and reopen any writing apps you already have open
+1. Download this repo (**Code** → **Download ZIP**) and unzip it
+2. **Right-click** `Learn Words.command` → **Open** → **Open**
+3. Wait about 10 seconds for the success message
+4. Quit and reopen your writing app
 
-No Terminal or any keyboard settings to change.
+Your Mac blocks downloaded files until you approve them once — that is why step 2 uses right-click. After the first time, double-click works fine.
 
-macOS may ask you to confirm opening the file the first time, which is normal for downloaded `.command` files.
+If you only see an **OK** button and nothing happens, you double-clicked too soon. Use right-click → Open instead.
 
-_Pasting `words.txt` into `LocalDictionary` by hand does not work for bulk adds on modern macOS. The words show up in the file, but spell-check keeps flagging them. This installer uses the system API that actually sticks._
+No Terminal. No keyboard settings to change.
 
-Double-click **`Uninstall.command`**, then quit and reopen your writing apps.
+#### Uninstall
+
+Right-click → Open the first time, same as install. Run **`Uninstall.command`**, then quit your writing app.
