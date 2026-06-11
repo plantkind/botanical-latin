@@ -1,3 +1,5 @@
+<img width="3078" height="1058" alt="CleanShot 2026-06-10 at 20 47 22@2x" src="https://github.com/user-attachments/assets/49e8381d-0ae4-4e60-b52b-59bdc590a700" />
+
 **botanical-latin**
 
 Remove red squiggles spelling errors on California native plant names while you type on your computer
