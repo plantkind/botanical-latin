@@ -1,6 +1,6 @@
 <img width="3078" height="1058" alt="CleanShot 2026-06-10 at 20 47 22@2x" src="https://github.com/user-attachments/assets/49e8381d-0ae4-4e60-b52b-59bdc590a700" />
 
-Remove red squiggles on California native plant names while you type on your Mac.
+Remove red squiggles that appear as mispelling errors on California native plant names while you type on your Mac.
 
 `Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a misspelled word, but for the full list at once.
 
