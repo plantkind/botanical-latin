@@ -2,7 +2,7 @@
 
 Remove red squiggles that appear as mispelling errors on California native plant names while you type on your Mac.
 
-`Learn Words.command` teaches macOS the same way `Learn Spelling` does when you right-click a misspelled word, but for the full list at once.
+`Learn Words.command` teaches macOS the same way `Learn Spelling` does when you right-click a misspelled word, but for the full list all at once.
 
 Works in Notion's desktop app, Notes, Mail, Pages, TextEdit, iA Writer, and most Mac apps that use system spell-check. Web apps in a browser may use Chrome or Safari spell-check instead, so desktop apps are preferred.
 
