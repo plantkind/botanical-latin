@@ -2,15 +2,15 @@
 
 Remove red squiggles that appear as mispelling errors on California native plant names while you type on your Mac.
 
-`Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a misspelled word, but for the full list at once.
+`Learn Words.command` teaches macOS the same way `Learn Spelling` does when you right-click a misspelled word, but for the full list at once.
 
 Works in Notion's desktop app, Notes, Mail, Pages, TextEdit, iA Writer, and most Mac apps that use system spell-check. Web apps in a browser may use Chrome or Safari spell-check instead, so desktop apps are preferred.
 
-15,551 entries · 8,893 species · built from [iNaturalist](https://www.inaturalist.org/) California native plant data
+15,551 entries · 8,893 species · Built from [iNaturalist](https://www.inaturalist.org/) California native plant data
 
 #### Install
 
-1. Download this repo (**Code** → **Download ZIP**) and unzip it
+1. Download this repo on this page here with (**Code** → **Download ZIP**) and unzip it
 2. **Right-click** `Learn Words.command` → **Open** → **Open**
 3. Wait about 10 seconds for the success message
 4. Quit and reopen your writing app
