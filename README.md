@@ -4,7 +4,7 @@
 
 Remove red squiggles on California native plant names while you type on your Mac.
 
-`Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a misspelled word — but for the full list at once.
+`Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a misspelled word, but for the full list at once.
 
 Works in Notion's desktop app, Notes, Mail, Pages, TextEdit, iA Writer, and most Mac apps that use system spell-check. Web apps in a browser may use Chrome or Safari spell-check instead, so desktop apps are preferred.
 
@@ -17,11 +17,9 @@ Works in Notion's desktop app, Notes, Mail, Pages, TextEdit, iA Writer, and most
 3. Wait about 10 seconds for the success message
 4. Quit and reopen your writing app
 
-Your Mac blocks downloaded files until you approve them once — that is why step 2 uses right-click. After the first time, double-click works fine.
+Your Mac blocks downloaded files until you approve them once, and that is why step 2 uses `right-click`.
 
 If you only see an **OK** button and nothing happens, you double-clicked too soon. Use right-click → Open instead.
-
-No Terminal. No keyboard settings to change.
 
 #### Uninstall
 
