@@ -19,4 +19,4 @@ Your Mac blocks downloaded files until you approve them once, and that is why st
 
 If you only see an **OK** button and nothing happens, you double-clicked too soon. Use right-click → Open instead.
 
-Right-click → Open the first time, same as install. Run **`Uninstall.command`**, then quit your writing app.
+Right-click → Open the first time, same as install. Run `Uninstall.command` and then quit your writing app.
