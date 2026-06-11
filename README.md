@@ -6,7 +6,7 @@ Remove red squiggles spelling errors on California native plant names while you 
 
 Double-click one file and then macOS spell-check recognizes names like `Arctostaphylos`, `Eriogonum`, and `Ceanothus`
 
-This `Learn Words.command` teaches macOS the same way **Learn Spelling** does when you right-click a word. Once per plant name, automatically, for the full list.
+This `Learn Words.command` teaches macOS the same way when you right click on a mispelled word to then `Learn Spelling` does. Instead of doing this for every plant name, this loads the entire list of plants.
 
 Works in your favorite writing apps like Notion's desktop app, Notes, Mail, Pages, Text Edit, iA Writer, and most mac apps that use the system spell-check. Web apps in the browser may use Chrome or Safari spell check instead, so desktop apps are preferred.
 
